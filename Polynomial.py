@@ -8,44 +8,43 @@ class Polynomial:
         """
         self.terms.append([coefficient, exponent])
     
-    def heapify(self, n, i):
-        """
-        Función para convertir un subárbol en un heap
-        """
-        largest = i  # Inicializa el nodo más grande como raíz
-        left = 2 * i + 1  # Índice del hijo izquierdo
-        right = 2 * i + 2  # Índice del hijo derecho
-        
-        # Comprobar si el hijo izquierdo es mayor que la raíz
-        if left < n and self.terms[left][1] > self.terms[largest][1]:
-            largest = left
-
-        # Comprobar si el hijo derecho es mayor que el mayor hasta ahora
-        if right < n and self.terms[right][1] > self.terms[largest][1]:
-            largest = right
-
-        # Si el mayor no es la raiz, intercambiar y continuar el heapify
-        if largest != i:
-            self.terms[i], self.terms[largest] = self.terms[largest], self.terms[i]  # Intercambiar
-            self.heapify(n, largest)  # Llamada recursiva
-
+    
     def heapsort(self):
         """
         Metodo para ordenar el polinomio usando Heapsort
         """
         n = len(self.terms)
 
-        # Construir el heap
         for i in range(n // 2 - 1, -1, -1):
             self.heapify(n, i)
 
-        # Extraer los elementos uno a uno del heap
         for i in range(n - 1, 0, -1):
-            self.terms[i], self.terms[0] = self.terms[0], self.terms[i]  # Intercambiar
-            self.heapify(i, 0)  # Ajustar el heap reducido
+            self.terms[i], self.terms[0] = self.terms[0], self.terms[i]
+            self.heapify(i, 0)
+            
+            
+    def heapify(self, n, i):
+        """
+        Función para convertir un subárbol en un heap
+        """
+        largest = i  
+        left = 2 * i + 1 
+        right = 2 * i + 2  
+        
+        if left < n and self.terms[left][1] > self.terms[largest][1]:
+            largest = left
+
+        if right < n and self.terms[right][1] > self.terms[largest][1]:
+            largest = right
+
+        if largest != i:
+            self.terms[i], self.terms[largest] = self.terms[largest], self.terms[i]
+            self.heapify(n, largest)
+
 
     def organize_polynomial(self):
         self.heapsort()
+
 
     def simplify_polynomial(self):
         """
@@ -65,6 +64,7 @@ class Polynomial:
                 new_terms.append([coef, exp])
 
         self.terms = new_terms
+
 
     def print_polinomial(self):
         """

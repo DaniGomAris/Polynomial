@@ -4,6 +4,7 @@ class Menu:
     def __init__(self, Polynomial):
         self.poly = Polynomial()
 
+
     def view_principal_menu(self):
         """
         Metodo que permite ver el menu principal
@@ -24,6 +25,7 @@ class Menu:
         else:
             print("             Invalid option")
             self.view_principal_menu()
+            
             
     def view_polynomial_menu(self):
         """
