@@ -1,4 +1,4 @@
-from Menu import Menu
+from Console_menu import Menu
 from Polynomial import Polynomial
 
 if __name__ == "__main__":
