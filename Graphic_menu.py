@@ -8,20 +8,23 @@ class PolynomialApp:
         self.master.title("Polynomial GUI")
         
         self.poly = Polynomial()
-        
-        tk.Label(master, text="Coefficient:").grid(row=0, column=0)
+
+        for all in range(2):
+            master.grid_columnconfigure(all, weight=1)
+
+        tk.Label(master, text="Coefficient:").grid(row=0, column=0, sticky='e')
         self.coeff_entry = tk.Entry(master)
-        self.coeff_entry.grid(row=0, column=1)
+        self.coeff_entry.grid(row=0, column=1, sticky='w')
 
-        tk.Label(master, text="Exponent:").grid(row=1, column=0)
+        tk.Label(master, text="Exponent:").grid(row=1, column=0, sticky='e')
         self.exp_entry = tk.Entry(master)
-        self.exp_entry.grid(row=1, column=1)
+        self.exp_entry.grid(row=1, column=1, sticky='w')
 
-        tk.Button(master, text="Add Term", command=self.add_term).grid(row=2, column=0, columnspan=2)
-        tk.Button(master, text="Organize Polynomial", command=self.organize_polynomial).grid(row=3, column=0, columnspan=2)
-        tk.Button(master, text="Simplify Polynomial", command=self.simplify_polynomial).grid(row=4, column=0, columnspan=2)
-        tk.Button(master, text="Show Polynomial", command=self.show_polynomial).grid(row=5, column=0, columnspan=2)
-        tk.Button(master, text="Exit", command=master.quit).grid(row=6, column=0, columnspan=2)
+        tk.Button(master, text="Add Term", command=self.add_term).grid(row=2, column=0, columnspan=2, pady=5)
+        tk.Button(master, text="Organize Polynomial", command=self.organize_polynomial).grid(row=3, column=0, columnspan=2, pady=5)
+        tk.Button(master, text="Simplify Polynomial", command=self.simplify_polynomial).grid(row=4, column=0, columnspan=2, pady=5)
+        tk.Button(master, text="Show Polynomial", command=self.show_polynomial).grid(row=5, column=0, columnspan=2, pady=5)
+        tk.Button(master, text="Exit", command=master.quit).grid(row=6, column=0, columnspan=2, pady=5)
 
     def add_term(self):
         try:
